@@ -1,13 +1,18 @@
 <template lang="html">
   <div class="">
-    主页面
+    <TodayRecommend/>
   </div>
 </template>
 
 <script>
+import TodayRecommend from "../components/Today_Recommend"
 export default {
+    name:"home",
+    components:{
+    TodayRecommend
+    }
 }
 </script>
 
-<style lang="css">
+<style scoped>
 </style>
