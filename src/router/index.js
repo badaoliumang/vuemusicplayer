@@ -6,6 +6,9 @@ import Artists from "@/pages/artists"
 import ListCate from "@/pages/listcate"
 import Ucenter from "@/pages/ucenter"
 import Search from "@/pages/search"
+import HotList from "@/pages/musiclist/hot_list"
+import KingList from "@/pages/musiclist/king_list"
+import NewsList from "@/pages/musiclist/news_list"
 Vue.use(Router)
 
 export default new Router({
@@ -19,7 +22,22 @@ export default new Router({
       children:[
         {
           path: 'home',
-          component: Home
+          component: Home,
+          redirect:"/home/hot",
+          children:[
+            {
+              path:"hot",
+              component:HotList
+            },
+            {
+              path:"king",
+              component:KingList
+            },
+            {
+              path:"news",
+              component:NewsList
+            }
+          ]
         },
         {
             path:"artists",

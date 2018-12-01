@@ -2,7 +2,11 @@
   <div class="">
     <TodayRecommend/>
     <NewsMusic />
-      <SwiperBanner/>
+    <SwiperBanner/>
+    <MusicListNav />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 
@@ -10,12 +14,14 @@
 import TodayRecommend from "../components/Today_Recommend"
 import NewsMusic from "../components/News_Music"
 import SwiperBanner from "../components/Swiper_Banner"
+import MusicListNav from "./musiclist/music_listnav"
 export default {
     name:"home",
     components:{
     TodayRecommend,
     NewsMusic,
-    SwiperBanner
+    SwiperBanner,
+    MusicListNav
     }
 }
 </script>
