@@ -34,13 +34,17 @@ export default {
       type:String,
       default:"今日榜单"
     },
+    url:{
+      type:String,
+      default:"/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=6&offset=0"
+    },
     type:{
       type:String,
       default:"1"
     }
   },
   mounted(){
-    var url = this.HOST + "/v1/restserver/ting?method=baidu.ting.billboard.billList&type="+ this.type +"&size=6&offset=0";
+    var url = this.HOST + this.url;
     this.$axios.get(url)
     .then(res => {
       this.todayRecommend = res.data.song_list
