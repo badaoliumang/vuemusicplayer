@@ -9,6 +9,7 @@ import Search from "@/pages/search"
 import HotList from "@/pages/musiclist/hot_list"
 import KingList from "@/pages/musiclist/king_list"
 import NewsList from "@/pages/musiclist/news_list"
+import MoreList from "@/pages/morelist"
 Vue.use(Router)
 
 export default new Router({
@@ -54,7 +55,12 @@ export default new Router({
           {
             path:"search",
             component:Search
-          }
+          },
+          {
+          path:"more",
+          name:"MoreList",
+          component:MoreList
+        }
       ]
     }
 
