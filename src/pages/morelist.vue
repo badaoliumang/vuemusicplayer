@@ -19,6 +19,9 @@
 
 <script>
 
+
+import VuePullRefresh from 'vue-pull-refresh';
+
 export default {
   name:"morelist",
   data(){
@@ -26,6 +29,9 @@ export default {
       moreListData:[],
       offset:0
     }
+  },
+  components:{
+    VuePullRefresh
   },
   mounted(){
     const moreListUrl = this.HOST + "/v1/restserver/ting?method=baidu.ting.billboard.billList&type="+ this.$route.params.musictype +"&size=12&offset=0"
@@ -37,6 +43,28 @@ export default {
       .catch(error => {
         console.log(error);
       })
+  },
+  methods:{
+    // 下拉的时候触发函数
+    onRefresh: function() {
+        var that = this;
+        const moreListUrl = this.HOST + "/v1/restserver/ting?method=baidu.ting.billboard.billList&type="+ this.$route.params.musictype +"&size=12&offset="+this.offset;
+        return new Promise(function (resolve, reject) {
+          setTimeout(() => {
+            that.$axios.get(moreListUrl)
+              .then(res => {
+                console.log(res.data);
+                that.offset >= res.data.billboard.billboard_songnum - 12 ? console.log("没数据了") : that.offset += 12,
+                // that.moreListData = that.moreListData.concat(res.data.song_list)
+                that.moreListData = res.data.song_list
+                resolve();
+              })
+              .catch(error => {
+                console.log(error);
+              })
+          })
+        });
+    }
   }
 }
 </script>
