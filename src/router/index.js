@@ -10,11 +10,16 @@ import HotList from "@/pages/musiclist/hot_list"
 import KingList from "@/pages/musiclist/king_list"
 import NewsList from "@/pages/musiclist/news_list"
 import MoreList from "@/pages/morelist"
+import MusicPlay from "@/pages/musicplay"
 Vue.use(Router)
 
 export default new Router({
   routes: [
-
+     {
+      path:"/musicplay",
+      name:"MusicPlay",
+      component:MusicPlay
+      },
       {
       path: '/',
       name: 'Index',

@@ -9,12 +9,12 @@
     <div class="container">
         <div class="gallery">
             <div class="scroller">
-                <div class="card url" v-for="(item,index) in todayRecommend" :key="index">
+                <router-link tag="div" :to="{name:'MusicPlay',params:{songid:item.song_id}}" class="card url" v-for="(item,index) in todayRecommend" :key="index">
                     <div class="album">
                         <img :src="item.pic_big" :alt="item.title">
                         <div class="name">{{ item.title }}</div>
                     </div>
-                </div>
+                </router-link>
             </div>
         </div>
     </div>
@@ -34,17 +34,13 @@ export default {
       type:String,
       default:"今日榜单"
     },
-    url:{
-      type:String,
-      default:"/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1&size=6&offset=0"
-    },
     type:{
       type:String,
       default:"1"
     }
   },
   mounted(){
-    var url = this.HOST + this.url;
+    var url = this.HOST + "/v1/restserver/ting?method=baidu.ting.billboard.billList&type="+ this.type +"&size=6&offset=0";
     this.$axios.get(url)
     .then(res => {
       this.todayRecommend = res.data.song_list

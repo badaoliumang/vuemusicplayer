@@ -2,7 +2,7 @@
   <div class="board panels">
     <div class="panel hotsongs on">
       <ul class="list">
-        <li class="song url" v-for="(item,index) in currentData" :key="index">
+        <router-link :to="{name:'MusicPlay',params:{songid:item.song_id}}" tag="li" class="song url" v-for="(item,index) in currentData" :key="index">
           <div class="poster">
             <img :src="item.pic_big" :alt="item.title">
           </div>
@@ -12,7 +12,7 @@
             </div>
             <div class="author">{{ item.artist_name }}</div>
           </div>
-        </li>
+        </router-link>
       </ul>
       <div class="more-songs url">
           查看该榜单&gt;
