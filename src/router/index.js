@@ -11,6 +11,7 @@ import KingList from "@/pages/musiclist/king_list"
 import NewsList from "@/pages/musiclist/news_list"
 import MoreList from "@/pages/morelist"
 import MusicPlay from "@/pages/musicplay"
+import ArtistsDetails from "@/pages/artistsDetails/artistsDetails"
 Vue.use(Router)
 
 export default new Router({
@@ -65,7 +66,12 @@ export default new Router({
           path:"more",
           name:"MoreList",
           component:MoreList
-        }
+        },
+        {
+        path:"artistsdetails",
+        name:"ArtistsDetails",
+        component:ArtistsDetails
+      }
       ]
     }
 
