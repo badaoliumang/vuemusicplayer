@@ -12,24 +12,27 @@ import NewsList from "@/pages/musiclist/news_list"
 import MoreList from "@/pages/morelist"
 import MusicPlay from "@/pages/musicplay"
 import ArtistsDetails from "@/pages/artistsDetails/artistsDetails"
+import LicateDetails from "@/pages/licateDetails/licateDetails"
+
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
-     {
+    {
       path:"/musicplay",
       name:"MusicPlay",
       component:MusicPlay
-      },
-      {
+    },
+    {
       path: '/',
       name: 'Index',
       redirect:"/home",
       component: Index,
       children:[
         {
-          path: 'home',
-          component: Home,
+          path:"home",
+          component:Home,
           redirect:"/home/hot",
           children:[
             {
@@ -47,33 +50,37 @@ export default new Router({
           ]
         },
         {
-            path:"artists",
-            component:Artists
-          },
-          {
-            path:"listcate",
-            component:ListCate
-          },
-          {
-            path:"ucenter",
-            component:Ucenter
-          },
-          {
-            path:"search",
-            component:Search
-          },
-          {
+          path:"artists",
+          component:Artists
+        },
+        {
+          path:"listcate",
+          component:ListCate
+        },
+        {
+          path:"ucenter",
+          component:Ucenter
+        },
+        {
+          path:"search",
+          component:Search
+        },
+        {
           path:"more",
           name:"MoreList",
           component:MoreList
         },
         {
-        path:"artistsdetails",
-        name:"ArtistsDetails",
-        component:ArtistsDetails
-      }
+          path:"artistsdetails",
+          name:"ArtistsDetails",
+          component:ArtistsDetails
+        },
+        {
+          path:"licatedetails",
+          name:"LicateDetails",
+          component:LicateDetails
+        }
       ]
     }
-
   ]
 })
